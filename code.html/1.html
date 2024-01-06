@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Group App</title>
+    <link rel="stylesheet" href="1.css">
+    
+</head>
+
+<body>
+        <header> 
+            <h1 style="color:black">Real-time Communication</h1>
+
+            </header>
+    
+    
+    
+        <section>
+            <h2>Real-time Communication</h2>
+            
+            <div id="chatcontainer">
+                
+            </div>
+            <textarea id="message-input" placeholder="Type your message"></textarea>
+            <button onclick="sendMessage()">Send</button>
+        </section>
+    
+        
+    
+        <script>
+            function sendMessage() {
+                
+                var messageInput = document.getElementById('message-input');
+                var message = messageInput.value;
+    
+                
+                if (message.trim() !== '') {
+                    
+                    var chatContainer = document.getElementById('chat-container');
+                    var newMessage = document.createElement('div');
+                    newMessage.textContent = message;
+                    chatContainer.appendChild(newMessage);
+    
+                
+                    messageInput.value = '';
+                }
+            }
+        </script>
+          <title>File Sharing</title>
+        </head>
+        <body>
+        
+            <header>
+                <h1 style="color:black">File Sharing</h1>
+            </header>
+            
+            <section>
+                <h2>File Sharing</h2>
+        
+                <input type="file" id="file-input" onchange="uploadFile()">
+                <div id="file-content"></div>
+                <button type="button" onclick="uploadFile()">Upload file</button>
+            </section>
+        
+            <script>
+                function uploadFile() {
+                    var fileInput = document.getElementById("file-input");
+                    var fileContent = document.getElementById("file-content");
+        
+                    var file = fileInput.files[0];
+        
+                    if (file) {
+                        
+                        if (file.type === "application/pdf") {
+                            var reader = new FileReader();
+        
+                            reader.onload = function (e) {
+                                
+                                var blobUrl = URL.createObjectURL(new Blob([e.target.result], { type: 'application/pdf' }));
+        
+                                
+                                fileContent.innerHTML = `<iframe src="${blobUrl}" width="100%" height="500px"></iframe>`;
+                            };
+        
+                            reader.readAsArrayBuffer(file);
+                        } else {
+                            alert("Please upload a valid PDF file.");
+                        }
+                    }
+                }
+            </script>
+           
+    <title>Schedule Online Class</title>
+</head>
+<body>
+
+    <header>
+        <h1 style="color:black">Schedule Online Class</h1>
+    </header>
+    <section>
+        <h2>Schedule Online Class</h2>
+
+        <form id="class-schedule-form">
+            <label for="class-name">Class Name:</label>
+            <input type="text" id="class-name" name="class-name" required>
+
+            <label for="class-date">Class Date:</label>
+            <input type="date" id="class-date" name="class-date" required>
+
+            <label for="class-time">Class Time:</label>
+            <input type="time" id="class-time" name="class-time" required>
+
+            <label for="class-duration">Class Duration (in hours):</label>
+            <input type="number" id="class-duration" name="class-duration" min="1" required>
+
+            <label for="class-platform">Online Platform:</label>
+            <select id="class-platform" name="class-platform" required>
+                <option value="zoom">Zoom</option>
+                <option value="teams">Microsoft Teams</option>
+                <option value="google-meet">Google Meet</option>
+            </select>
+
+            <button type="button" onclick="scheduleClass()">Schedule Class</button>
+        </form>
+
+        
+        <div id="output-container"></div>
+    </section>
+
+    <script>
+        function scheduleClass() {
+            var className = document.getElementById("class-name").value;
+            var classDate = document.getElementById("class-date").value;
+            var classTime = document.getElementById("class-time").value;
+            var classDuration = document.getElementById("class-duration").value;
+            var classPlatform = document.getElementById("class-platform").value;
+
+            
+            var outputContainer = document.getElementById("output-container");
+            outputContainer.innerHTML = `
+                <p>Class Name: ${className}</p>
+                <p>Class Date: ${classDate}</p>
+                <p>Class Time: ${classTime}</p>
+                <p>Class Duration: ${classDuration} hours</p>
+                <p>Online Platform: ${classPlatform}</p>
+            `;
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
+   

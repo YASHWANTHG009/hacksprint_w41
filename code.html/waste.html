@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Online Class</title>
+</head>
+<body>
+
+<header>
+    <h1 style="color:black">Schedule Online Class</h1>
+</header>
+
+<section>
+    <h2>Schedule Online Class</h2>
+
+    <form id="class-schedule-form">
+        <label for="class-name">Class Name:</label>
+        <input type="text" id="class-name" name="class-name" required>
+
+        <label for="class-date">Class Date:</label>
+        <input type="date" id="class-date" name="class-date" required>
+
+        <label for="class-time">Class Time:</label>
+        <input type="time" id="class-time" name="class-time" required>
+
+        <label for="class-duration">Class Duration (in hours):</label>
+        <input type="number" id="class-duration" name="class-duration" min="1" required>
+
+        <label for="class-platform">Online Platform:</label>
+        <select id="class-platform" name="class-platform" required>
+            <option value="zoom">Zoom</option>
+            <option value="teams">Microsoft Teams</option>
+            <option value="google-meet">Google Meet</option>
+        </select>
+
+        <button type="button" onclick="generateLink()">Generate Schedule Link</button>
+    </form>
+
+    <p id="schedule-link"></p>
+
+    <script>
+        function generateLink() {
+            // Get form values
+            const className = document.getElementById('class-name').value;
+            const classDate = document.getElementById('class-date').value;
+            const classTime = document.getElementById('class-time').value;
+            const classDuration = document.getElementById('class-duration').value;
+            const classPlatform = document.getElementById('class-platform').value;
+
+            // Generate link
+            const link = `https://example.com/schedule?name=${encodeURIComponent(className)}&date=${classDate}&time=${classTime}&duration=${classDuration}&platform=${classPlatform}`;
+
+            // Display link
+            document.getElementById('schedule-link').innerHTML = `<strong>Schedule Link:</strong> <a href="${link}" target="_blank">${link}</a>`;
+        }
+    </script>
+</section>
+
+</body>
+</html>
